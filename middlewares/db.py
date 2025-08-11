@@ -1,5 +1,5 @@
 from aiogram import BaseMiddleware
-from aiogram.types import Message, TelegramObject
+from aiogram.types import TelegramObject
 from typing import Callable, Dict, Any, Awaitable
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
@@ -17,6 +17,7 @@ class DataBaseSession(BaseMiddleware):
             async with self.session_pool() as session:
                 data['session'] = session
                 return await handler(event, data)
+                
 # class CounterMiddleware(BaseMiddleware):
 #     def __init__(self) -> None:
 #         self.counter = 0
